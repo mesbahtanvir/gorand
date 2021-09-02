@@ -4,10 +4,37 @@ import (
 	"math/rand"
 )
 
+func SliceUint8(len int) []uint8 {
+	res := make([]uint8, len)
+	for i := 0; i < len; i++ {
+		res[i] = uint8(rand.Uint32())
+	}
+	return res
+}
+
+var SliceByte = SliceUint8
+var Bytes = SliceUint8
+
 func SliceInt63(len int) []int64 {
 	res := make([]int64, len)
 	for i := 0; i < len; i++ {
 		res[i] = rand.Int63()
+	}
+	return res
+}
+
+func SliceUint64(len int) []uint64 {
+	res := make([]uint64, len)
+	for i := 0; i < len; i++ {
+		res[i] = rand.Uint64()
+	}
+	return res
+}
+
+func SliceUint32(len int) []uint32 {
+	res := make([]uint32, len)
+	for i := 0; i < len; i++ {
+		res[i] = rand.Uint32()
 	}
 	return res
 }

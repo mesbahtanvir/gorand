@@ -17,7 +17,7 @@ func Rune() rune {
 
 func String(len int) string {
 	var str strings.Builder
-	for i:=0; i< len ;i++{
+	for i := 0; i < len; i++ {
 		str.WriteRune(Rune())
 	}
 	return str.String()

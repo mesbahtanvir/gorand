@@ -1,14 +1,16 @@
 package gorand
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"unicode/utf8"
 )
 
 func TestRune(t *testing.T) {
 	for i := 0; i < 100000; i++ {
-		assert.True(t, utf8.ValidRune(Rune()))
+		r := Rune()
+		if !utf8.ValidRune(r) {
+			t.Errorf("invalid rune %v", r)
+		}
 	}
 }
 
@@ -68,7 +70,9 @@ func TestString_NonEmpty(t *testing.T) {
 			if utf8.RuneCountInString(got) != tt.args.len {
 				t.Errorf("String() = %v, want %v", len(got), tt.args.len)
 			}
-			assert.True(t, utf8.Valid([]byte(got)))
+			if !utf8.Valid([]byte(got)) {
+				t.Errorf("Not valid utf8 string")
+			}
 		})
 	}
 }
